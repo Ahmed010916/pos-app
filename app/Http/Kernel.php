@@ -64,11 +64,16 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+<<<<<<< HEAD
         /**** MIDDLEWARE - LaravelLocalization -  ****/
+=======
+        /**** OTHER MIDDLEWARE ****/
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
         'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
         'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
         'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
         'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+<<<<<<< HEAD
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         /**** MIDDLEWARE -  -  ****/
         'role' => \Laratrust\Middleware\LaratrustRole::class,
@@ -77,5 +82,8 @@ class Kernel extends HttpKernel
         /**** MY MIDDLEWARE -  -  ****/
         'status' => CheckStatus::class,
 
+=======
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
     ];
 }

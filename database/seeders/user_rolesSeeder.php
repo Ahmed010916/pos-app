@@ -20,8 +20,13 @@ class user_rolesSeeder extends Seeder
     public function run()
     {
       $user_id = User::insertGetId([
+<<<<<<< HEAD
             'name' =>    'admin',
             'email' =>   'admin@gmail.com',
+=======
+            'name' =>    'Ahmed',
+            'email' =>   'Ahmed@gmail.com',
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
             "password"=> Hash::make('123456'),
         ]);
 
@@ -31,7 +36,11 @@ class user_rolesSeeder extends Seeder
 
 
         $prem = [
+<<<<<<< HEAD
             'users','profile'
+=======
+            'users','products'
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
         ];
 
         foreach ($prem as $pre) {

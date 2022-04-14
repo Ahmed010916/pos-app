@@ -46,7 +46,11 @@
           </div>
           <button x-show="btn" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
           <div x-show="!btn" class="spinner-border mr-3 text-primary" role="status"><span class="sr-only">Loading...</span></div>
+<<<<<<< HEAD
           <a href="{{ route('register') }}" class="d-flex m-1">Create new Acount</a>
+=======
+          {{--<a href="{{ route('register') }}" class="d-flex m-1">Create new Acount</a>--}}
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
           <p class="mt-5 mb-3 text-muted">© 2022</p>
         </form>
       </div>

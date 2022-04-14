@@ -6,10 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\StoreUsersRequest;
 use App\Http\Requests\User\updateUsersRequest;
 use App\Models\Permission;
+<<<<<<< HEAD
+=======
+use App\Models\Role;
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
 use App\Models\User;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Facades\DB;
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -22,12 +30,16 @@ class UserController extends Controller
 
     public function __construct()
     {
+<<<<<<< HEAD
         $this->Middleware(["auth"]);
         $this->Middleware(["permission:read_users"])->only('index');
         $this->Middleware(["permission:create_users"])->only(['create', 'store']);
         $this->Middleware(["permission:update_users"])->only(['edite', 'update']);
         $this->Middleware(["permission:delete_users"])->only('destroy');
         $this->middleware('status');
+=======
+        return $this->Middleware('auth');
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
     }
     public function index()
     {
@@ -70,7 +82,11 @@ class UserController extends Controller
         $user->AttachPermissions($Permissions);
 
 
+<<<<<<< HEAD
         session()->flash('yes', "User is created");
+=======
+        session()->flash('yes',"User is created");
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
 
         return redirect()->route('users.index');
     }
@@ -108,6 +124,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -123,6 +140,23 @@ class UserController extends Controller
             'status'          => $request->status,
         ]);
         $user->syncpermissions($request->Permissions);
+=======
+    public function update(Request $request,$id)
+    {
+      $user = User::findOrFail($id);
+      $request->validate([
+        'name'            => 'required|string|max:255|min:1',
+        'email'           => 'required|email|max:255|unique:users,email,'.$id.'min:2',
+        'password'        => 'required|string|max:255|min:6|confirmed',
+    ]);
+    $user->update([
+        'name'            => $request->name,
+        'email'           => $request->email,
+        'password'        => Hash::make($request->password),
+        'status'          => $request->status,
+    ]);
+    $user->syncpermissions($request->Permissions);
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
 
         return redirect()->route('users.index');
     }
@@ -136,7 +170,11 @@ class UserController extends Controller
      */
     public function destroy(Request $request)
     {
+<<<<<<< HEAD
         $user = User::where('email', '=', $request->email)->first();
+=======
+        $user = User::where('email','=',$request->email)->first();
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
         $user->delete();
 
         return redirect()->route('users.index');

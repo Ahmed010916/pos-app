@@ -27,7 +27,11 @@ return [
     'close'=>'close',
     'create_account'=>'Create Account',
 
+<<<<<<< HEAD
     'offers'=>'Offers',
+=======
+    ''=>'',
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
     ''=>'',
     ''=>'',
 

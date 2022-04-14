@@ -44,13 +44,19 @@
                     <span class="ml-3 item-text">@lang('site.settings')</span>
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="Settings">
+<<<<<<< HEAD
                     @permission("read_users")
+=======
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="{{ route('users.index') }}"><span
                                 class="ml-1 item-text">{{__('site.users')}}</span>
                         </a>
                     </li>
+<<<<<<< HEAD
                     @endpermission
+=======
+>>>>>>> b185d782da2b94ebd0df9fa5a0eb39a1bb2911a3
                 </ul>
             </li>
         </ul>
