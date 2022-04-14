@@ -1,24 +1,38 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OffersController;
+use App\Http\Controllers\settings\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use Illuminate\Contracts\Session\Session;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
+{
+    Route::get('/', function () {
+        if(Auth::user()->status == 0){
+            Auth::logout();
+            Session()->flash('acount_disabled', __('site.acount_disabled'));
+            return redirect()->route('login');
+        }
+       return view('Home');
+    })->middleware(['auth'])->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
+    Auth::routes(['register' => true, 'reset' => false, 'confirm' => false]);
+
+    /* start settings  */
+
+        /* start users  */
+        Route::resource('users', UserController::class)->middleware('auth');
+        /* end users  */
+
+        /* start users  */
+        Route::resource('offers', OffersController::class)->middleware('auth');
+        /* end users  */
+
+
+    /* End settings  */
 });
-Auth::routes();
 
-Route::get('/home',[HomeController::class, 'index'])->name('home');
 
